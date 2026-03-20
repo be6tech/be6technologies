@@ -40,6 +40,8 @@
     color:var(--text);
     line-height:1.6;
     overflow-x:hidden;
+    width:100%;
+    max-width:100vw;
   }
 
   /* NAV */
@@ -79,10 +81,7 @@
     padding-top:68px;
   }
 
-  /* Floating cloud shapes */
-  .cloud-field {
-    position:absolute; inset:0; pointer-events:none; overflow:hidden;
-  }
+  .cloud-field { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
   .cloud-shape {
     position:absolute;
     background:rgba(56,189,248,0.04);
@@ -103,7 +102,6 @@
   .c5 { width:90px;  height:34px; top:12%; animation-duration:24s; animation-delay:18s; }
   .c6 { width:160px; height:55px; top:85%; animation-duration:44s; animation-delay:6s; }
 
-  /* Grid lines top-down perspective */
   .hero-grid {
     position:absolute; inset:0; opacity:0.03;
     background-image:
@@ -123,7 +121,6 @@
 
   .hero-content { position:relative; z-index:2; max-width:900px; padding:0 24px; }
 
-  /* Animated cloud icon */
   .hero-icon {
     width:88px; height:88px; margin:0 auto 32px;
     background:var(--sky-dim); border:1px solid var(--sky-border);
@@ -162,10 +159,9 @@
     animation:fadeUp 0.7s 0.2s ease both; line-height:1.75;
   }
 
-  /* Provider logos row */
   .hero-providers {
     display:flex; align-items:center; gap:12px; justify-content:center;
-    margin-bottom:40px; animation:fadeUp 0.7s 0.25s ease both;
+    margin-bottom:40px; animation:fadeUp 0.7s 0.25s ease both; flex-wrap:wrap;
   }
   .provider-label { font-size:12px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-right:4px; }
   .provider-badge {
@@ -425,14 +421,114 @@
   .footer-brand { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:white; letter-spacing:2px; }
   .footer-tagline { font-size:13px; color:var(--text-muted); letter-spacing:1px; margin-bottom:36px; }
   .footer-cta { font-size:19px; font-weight:700; color:#7dd3fc; margin-bottom:32px; }
-  .footer-contacts { display:flex; justify-content:center; gap:48px; margin-bottom:36px; }
+  .footer-contacts { display:flex; justify-content:center; gap:48px; margin-bottom:36px; flex-wrap:wrap; }
   .footer-contact { display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-muted); }
   .footer-contact a { color:#7dd3fc; text-decoration:none; }
   .footer-contact a:hover { color:var(--sky); }
-  .footer-contact  { color:#7dd3fc; text-decoration:none; }
-
   .footer-divider { width:70px; height:2px; background:var(--sky); margin:0 auto 22px; opacity:0.3; }
   .footer-copy { font-size:11px; color:var(--text-dim); font-family:'DM Mono',monospace; }
+
+  /* ── MOBILE RESPONSIVE ─────────────────────────────────── */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav { padding:0 16px; height:60px; }
+    .nav-links { display:none; }
+    .nav-brand { font-size:13px; letter-spacing:0.5px; }
+    .nav-logo img { width:34px; height:34px; }
+    .nav-cta { padding:8px 14px; font-size:11px; }
+
+    /* HERO */
+    .hero { padding-top:60px; min-height:100svh; }
+    .hero-content { padding:0 16px; }
+    .hero-icon { width:68px; height:68px; font-size:34px; margin-bottom:20px; }
+    .hero-eyebrow { font-size:10px; padding:5px 12px; margin-bottom:18px; letter-spacing:1px; }
+    .hero-title { font-size:clamp(38px,10vw,58px); letter-spacing:-1px; margin-bottom:14px; line-height:1.0; }
+    .hero-sub { font-size:14px; margin-bottom:24px; }
+    .hero-providers { gap:8px; margin-bottom:20px; }
+    .provider-badge { padding:6px 12px; font-size:12px; }
+    .hero-badges { gap:8px; margin-bottom:24px; }
+    .badge { padding:8px 12px; font-size:11px; }
+    .hero-btns { flex-direction:column; align-items:center; gap:10px; }
+    .btn-primary, .btn-outline { width:100%; max-width:280px; text-align:center; padding:13px 20px; font-size:14px; }
+    .hero-orb-top { width:300px; height:150px; }
+    .cloud-field { display:none; }
+
+    /* STATS BAND */
+    .stats-band { grid-template-columns:repeat(2,1fr); }
+    .stat-item { padding:20px 10px; border-right:none; border-bottom:1px solid var(--border); }
+    .stat-item:nth-child(odd) { border-right:1px solid var(--border); }
+    .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom:none; }
+    .stat-num { font-size:26px; }
+    .stat-label { font-size:11px; }
+
+    /* SECTIONS */
+    section { padding:48px 16px; }
+    .section-title { font-size:clamp(20px,6vw,32px); }
+    .section-sub { font-size:14px; margin-bottom:28px; }
+
+    /* OVERVIEW */
+    .overview-grid { grid-template-columns:1fr; gap:32px; }
+    .overview-desc { font-size:14px; margin-bottom:20px; }
+    .audience-grid { grid-template-columns:1fr 1fr; gap:10px; }
+    .audience-card { padding:14px 12px; gap:10px; }
+    .audience-emoji { font-size:20px; }
+    .audience-name { font-size:13px; }
+
+    /* CURRICULUM */
+    .modules-grid { grid-template-columns:1fr; gap:12px; }
+    .module-card { padding:20px 16px; }
+    .module-name { font-size:14px; }
+    .module-desc { font-size:12px; }
+
+    /* PROVIDERS */
+    .providers-grid { grid-template-columns:1fr; gap:16px; }
+    .provider-card { padding:24px 20px; }
+    .provider-name { font-size:18px; }
+
+    /* TOOLS */
+    .tools-grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+    .tool-card { padding:16px 8px; }
+    .tool-emoji { font-size:22px; margin-bottom:6px; }
+    .tool-name { font-size:11px; }
+
+    /* PROJECTS */
+    .projects-grid { grid-template-columns:1fr; gap:14px; }
+    .project-top { padding:22px 18px 18px; }
+    .project-bottom { padding:14px 18px; }
+    .project-name { font-size:15px; }
+
+    /* DURATION BAND */
+    .duration-band { padding:32px 16px; }
+    .duration-inner { grid-template-columns:1fr; gap:28px; }
+    .dur-divider { display:none; }
+    .dur-value { font-size:28px; }
+
+    /* CAREERS */
+    .careers-grid { grid-template-columns:1fr; gap:12px; }
+    .career-card { padding:20px 16px; gap:14px; }
+    .career-icon { width:44px; height:44px; font-size:22px; }
+    .career-name { font-size:15px; }
+
+    /* WHY US */
+    .why-grid { grid-template-columns:1fr; gap:12px; }
+    .why-card { padding:20px 16px; gap:14px; }
+    .why-name { font-size:15px; }
+
+    /* FOOTER */
+    footer { padding:40px 16px 28px; }
+    .footer-contacts { flex-direction:column; gap:12px; align-items:center; }
+    .footer-brand { font-size:16px; }
+    .footer-cta { font-size:15px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size:clamp(32px,10vw,46px); }
+    .tools-grid { grid-template-columns:repeat(2,1fr); }
+    .audience-grid { grid-template-columns:1fr; }
+    .providers-grid { grid-template-columns:1fr; }
+    .hero-providers { flex-direction:column; align-items:center; }
+  }
 </style>
 </head>
 <body>
@@ -449,7 +545,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#careers">Careers</a></li>
   </ul>
-  <a href="/be6technologies/src/html/index.html" class="nav-cta">←Back to Home</a>
+  <a href="/be6technologies/src/html/index.html" class="nav-cta">← Back to Home</a>
 </nav>
 
 <!-- HERO -->
@@ -541,54 +637,14 @@
     <h2 class="section-title">8 Comprehensive Modules</h2>
     <p class="section-sub">From cloud fundamentals to multi-cloud architecture and DevOps pipelines.</p>
     <div class="modules-grid">
-      <div class="module-card">
-        <div class="module-num">1</div>
-        <span class="module-icon">☁️</span>
-        <div class="module-name">Cloud Computing Fundamentals</div>
-        <div class="module-desc">Cloud models (IaaS, PaaS, SaaS), deployment types, virtualization, and why businesses move to the cloud.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">2</div>
-        <span class="module-icon">🟠</span>
-        <div class="module-name">Amazon Web Services (AWS)</div>
-        <div class="module-desc">EC2, S3, RDS, Lambda, VPC, IAM, CloudFront, Elastic Load Balancing, and core AWS architecture.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">3</div>
-        <span class="module-icon">🔵</span>
-        <div class="module-name">Microsoft Azure</div>
-        <div class="module-desc">Azure VMs, Blob Storage, Azure SQL, App Services, Active Directory, and Azure networking fundamentals.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">4</div>
-        <span class="module-icon">🟢</span>
-        <div class="module-name">Google Cloud Platform (GCP)</div>
-        <div class="module-desc">Compute Engine, Cloud Storage, BigQuery, Kubernetes Engine, and GCP IAM and security policies.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">5</div>
-        <span class="module-icon">🐳</span>
-        <div class="module-name">Containers & Docker</div>
-        <div class="module-desc">Docker architecture, images, containers, volumes, networking, Docker Compose, and containerization best practices.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">6</div>
-        <span class="module-icon">⎈</span>
-        <div class="module-name">Kubernetes & Orchestration</div>
-        <div class="module-desc">K8s architecture, pods, deployments, services, ingress, auto-scaling, and managing containerized workloads.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">7</div>
-        <span class="module-icon">🔁</span>
-        <div class="module-name">DevOps & CI/CD Pipelines</div>
-        <div class="module-desc">Git workflows, Jenkins, GitHub Actions, automated testing, infrastructure as code with Terraform.</div>
-      </div>
-      <div class="module-card">
-        <div class="module-num">8</div>
-        <span class="module-icon">🔒</span>
-        <div class="module-name">Cloud Security & Monitoring</div>
-        <div class="module-desc">IAM policies, security groups, encryption, compliance, CloudWatch, and cloud cost optimization strategies.</div>
-      </div>
+      <div class="module-card"><div class="module-num">1</div><span class="module-icon">☁️</span><div class="module-name">Cloud Computing Fundamentals</div><div class="module-desc">Cloud models (IaaS, PaaS, SaaS), deployment types, virtualization, and why businesses move to the cloud.</div></div>
+      <div class="module-card"><div class="module-num">2</div><span class="module-icon">🟠</span><div class="module-name">Amazon Web Services (AWS)</div><div class="module-desc">EC2, S3, RDS, Lambda, VPC, IAM, CloudFront, Elastic Load Balancing, and core AWS architecture.</div></div>
+      <div class="module-card"><div class="module-num">3</div><span class="module-icon">🔵</span><div class="module-name">Microsoft Azure</div><div class="module-desc">Azure VMs, Blob Storage, Azure SQL, App Services, Active Directory, and Azure networking fundamentals.</div></div>
+      <div class="module-card"><div class="module-num">4</div><span class="module-icon">🟢</span><div class="module-name">Google Cloud Platform (GCP)</div><div class="module-desc">Compute Engine, Cloud Storage, BigQuery, Kubernetes Engine, and GCP IAM and security policies.</div></div>
+      <div class="module-card"><div class="module-num">5</div><span class="module-icon">🐳</span><div class="module-name">Containers & Docker</div><div class="module-desc">Docker architecture, images, containers, volumes, networking, Docker Compose, and containerization best practices.</div></div>
+      <div class="module-card"><div class="module-num">6</div><span class="module-icon">⎈</span><div class="module-name">Kubernetes & Orchestration</div><div class="module-desc">K8s architecture, pods, deployments, services, ingress, auto-scaling, and managing containerized workloads.</div></div>
+      <div class="module-card"><div class="module-num">7</div><span class="module-icon">🔁</span><div class="module-name">DevOps & CI/CD Pipelines</div><div class="module-desc">Git workflows, Jenkins, GitHub Actions, automated testing, infrastructure as code with Terraform.</div></div>
+      <div class="module-card"><div class="module-num">8</div><span class="module-icon">🔒</span><div class="module-name">Cloud Security & Monitoring</div><div class="module-desc">IAM policies, security groups, encryption, compliance, CloudWatch, and cloud cost optimization strategies.</div></div>
     </div>
   </div>
 </section>
@@ -605,13 +661,8 @@
         <div class="provider-name">AWS</div>
         <div class="provider-full">Amazon Web Services</div>
         <div class="provider-services">
-          <span class="provider-svc">EC2</span>
-          <span class="provider-svc">S3</span>
-          <span class="provider-svc">Lambda</span>
-          <span class="provider-svc">RDS</span>
-          <span class="provider-svc">VPC</span>
-          <span class="provider-svc">IAM</span>
-          <span class="provider-svc">CloudFront</span>
+          <span class="provider-svc">EC2</span><span class="provider-svc">S3</span><span class="provider-svc">Lambda</span>
+          <span class="provider-svc">RDS</span><span class="provider-svc">VPC</span><span class="provider-svc">IAM</span><span class="provider-svc">CloudFront</span>
         </div>
       </div>
       <div class="provider-card azure">
@@ -619,12 +670,8 @@
         <div class="provider-name">Azure</div>
         <div class="provider-full">Microsoft Azure</div>
         <div class="provider-services">
-          <span class="provider-svc">VMs</span>
-          <span class="provider-svc">Blob Storage</span>
-          <span class="provider-svc">Azure SQL</span>
-          <span class="provider-svc">App Services</span>
-          <span class="provider-svc">Active Directory</span>
-          <span class="provider-svc">AKS</span>
+          <span class="provider-svc">VMs</span><span class="provider-svc">Blob Storage</span><span class="provider-svc">Azure SQL</span>
+          <span class="provider-svc">App Services</span><span class="provider-svc">Active Directory</span><span class="provider-svc">AKS</span>
         </div>
       </div>
       <div class="provider-card gcp">
@@ -632,12 +679,8 @@
         <div class="provider-name">GCP</div>
         <div class="provider-full">Google Cloud Platform</div>
         <div class="provider-services">
-          <span class="provider-svc">Compute Engine</span>
-          <span class="provider-svc">Cloud Storage</span>
-          <span class="provider-svc">BigQuery</span>
-          <span class="provider-svc">GKE</span>
-          <span class="provider-svc">Cloud Run</span>
-          <span class="provider-svc">Pub/Sub</span>
+          <span class="provider-svc">Compute Engine</span><span class="provider-svc">Cloud Storage</span><span class="provider-svc">BigQuery</span>
+          <span class="provider-svc">GKE</span><span class="provider-svc">Cloud Run</span><span class="provider-svc">Pub/Sub</span>
         </div>
       </div>
     </div>
@@ -671,64 +714,28 @@
     <p class="section-sub">Hands-on projects on live cloud environments — the exact experience employers look for.</p>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">🌐</div>
-          <div class="project-name">Scalable Web App on AWS</div>
-          <span class="project-tag">EC2 · S3 · RDS · Load Balancer</span>
-        </div>
-        <div class="project-bottom">
-          <div class="project-desc">Deploy a highly available web application on AWS with auto-scaling, load balancing, and RDS backend.</div>
-        </div>
+        <div class="project-top"><div class="project-emoji">🌐</div><div class="project-name">Scalable Web App on AWS</div><span class="project-tag">EC2 · S3 · RDS · Load Balancer</span></div>
+        <div class="project-bottom"><div class="project-desc">Deploy a highly available web application on AWS with auto-scaling, load balancing, and RDS backend.</div></div>
       </div>
       <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">🐳</div>
-          <div class="project-name">Containerized Microservices</div>
-          <span class="project-tag">Docker · Kubernetes · GKE</span>
-        </div>
-        <div class="project-bottom">
-          <div class="project-desc">Package a multi-service application into Docker containers and orchestrate them on a Kubernetes cluster.</div>
-        </div>
+        <div class="project-top"><div class="project-emoji">🐳</div><div class="project-name">Containerized Microservices</div><span class="project-tag">Docker · Kubernetes · GKE</span></div>
+        <div class="project-bottom"><div class="project-desc">Package a multi-service application into Docker containers and orchestrate them on a Kubernetes cluster.</div></div>
       </div>
       <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">🔁</div>
-          <div class="project-name">CI/CD Pipeline Automation</div>
-          <span class="project-tag">GitHub Actions · Jenkins · Azure</span>
-        </div>
-        <div class="project-bottom">
-          <div class="project-desc">Build a fully automated CI/CD pipeline from code push to production deployment with zero downtime.</div>
-        </div>
+        <div class="project-top"><div class="project-emoji">🔁</div><div class="project-name">CI/CD Pipeline Automation</div><span class="project-tag">GitHub Actions · Jenkins · Azure</span></div>
+        <div class="project-bottom"><div class="project-desc">Build a fully automated CI/CD pipeline from code push to production deployment with zero downtime.</div></div>
       </div>
       <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">🏗️</div>
-          <div class="project-name">Infrastructure as Code</div>
-          <span class="project-tag">Terraform · AWS · GCP</span>
-        </div>
-        <div class="project-bottom">
-          <div class="project-desc">Provision complete cloud infrastructure — VPCs, subnets, EC2, and databases — using Terraform scripts.</div>
-        </div>
+        <div class="project-top"><div class="project-emoji">🏗️</div><div class="project-name">Infrastructure as Code</div><span class="project-tag">Terraform · AWS · GCP</span></div>
+        <div class="project-bottom"><div class="project-desc">Provision complete cloud infrastructure — VPCs, subnets, EC2, and databases — using Terraform scripts.</div></div>
       </div>
       <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">⚡</div>
-          <div class="project-name">Serverless Application</div>
-          <span class="project-tag">AWS Lambda · API Gateway · DynamoDB</span>
-        </div>
-        <div class="project-bottom">
-          <div class="project-desc">Build and deploy a fully serverless backend using Lambda functions, API Gateway, and DynamoDB.</div>
-        </div>
+        <div class="project-top"><div class="project-emoji">⚡</div><div class="project-name">Serverless Application</div><span class="project-tag">AWS Lambda · API Gateway · DynamoDB</span></div>
+        <div class="project-bottom"><div class="project-desc">Build and deploy a fully serverless backend using Lambda functions, API Gateway, and DynamoDB.</div></div>
       </div>
       <div class="project-card">
-        <div class="project-top">
-          <div class="project-emoji">🔒</div>
-          <div class="project-name">Cloud Security Hardening</div>
-          <span class="project-tag">IAM · Security Groups · Monitoring</span>
-        </div>
-        <div class="project-bottom">
-          <div class="project-desc">Audit and harden a cloud environment — configure IAM, set up CloudWatch alerts, and enforce compliance policies.</div>
-        </div>
+        <div class="project-top"><div class="project-emoji">🔒</div><div class="project-name">Cloud Security Hardening</div><span class="project-tag">IAM · Security Groups · Monitoring</span></div>
+        <div class="project-bottom"><div class="project-desc">Audit and harden a cloud environment — configure IAM, set up CloudWatch alerts, and enforce compliance policies.</div></div>
       </div>
     </div>
   </div>
@@ -758,30 +765,12 @@
     <h2 class="section-title">Your Cloud Career Path</h2>
     <p class="section-sub">Cloud professionals are among the highest-paid in the entire IT industry globally.</p>
     <div class="careers-grid">
-      <div class="career-card">
-        <div class="career-icon">☁️</div>
-        <div><div class="career-name">Cloud Engineer</div><div class="career-sub">Infrastructure · Deployment · Scaling</div></div>
-      </div>
-      <div class="career-card">
-        <div class="career-icon">🏗️</div>
-        <div><div class="career-name">Cloud Architect</div><div class="career-sub">Solution Design · Multi-Cloud Strategy</div></div>
-      </div>
-      <div class="career-card">
-        <div class="career-icon">🔁</div>
-        <div><div class="career-name">DevOps Engineer</div><div class="career-sub">CI/CD · Automation · IaC</div></div>
-      </div>
-      <div class="career-card">
-        <div class="career-icon">🐳</div>
-        <div><div class="career-name">Site Reliability Engineer</div><div class="career-sub">Kubernetes · Monitoring · Uptime</div></div>
-      </div>
-      <div class="career-card">
-        <div class="career-icon">🔒</div>
-        <div><div class="career-name">Cloud Security Engineer</div><div class="career-sub">IAM · Compliance · Security Ops</div></div>
-      </div>
-      <div class="career-card">
-        <div class="career-icon">📊</div>
-        <div><div class="career-name">Cloud Operations Analyst</div><div class="career-sub">Monitoring · Cost Optimization · Support</div></div>
-      </div>
+      <div class="career-card"><div class="career-icon">☁️</div><div><div class="career-name">Cloud Engineer</div><div class="career-sub">Infrastructure · Deployment · Scaling</div></div></div>
+      <div class="career-card"><div class="career-icon">🏗️</div><div><div class="career-name">Cloud Architect</div><div class="career-sub">Solution Design · Multi-Cloud Strategy</div></div></div>
+      <div class="career-card"><div class="career-icon">🔁</div><div><div class="career-name">DevOps Engineer</div><div class="career-sub">CI/CD · Automation · IaC</div></div></div>
+      <div class="career-card"><div class="career-icon">🐳</div><div><div class="career-name">Site Reliability Engineer</div><div class="career-sub">Kubernetes · Monitoring · Uptime</div></div></div>
+      <div class="career-card"><div class="career-icon">🔒</div><div><div class="career-name">Cloud Security Engineer</div><div class="career-sub">IAM · Compliance · Security Ops</div></div></div>
+      <div class="career-card"><div class="career-icon">📊</div><div><div class="career-name">Cloud Operations Analyst</div><div class="career-sub">Monitoring · Cost Optimization · Support</div></div></div>
     </div>
   </div>
 </section>
@@ -795,31 +784,19 @@
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon-wrap">👨‍🏫</div>
-        <div>
-          <div class="why-name">Industry Expert Trainers</div>
-          <div class="why-desc">Learn from certified cloud engineers with real-world experience on AWS, Azure, and GCP.</div>
-        </div>
+        <div><div class="why-name">Industry Expert Trainers</div><div class="why-desc">Learn from certified cloud engineers with real-world experience on AWS, Azure, and GCP.</div></div>
       </div>
       <div class="why-card">
         <div class="why-icon-wrap">🖥️</div>
-        <div>
-          <div class="why-name">Live Cloud Lab Access</div>
-          <div class="why-desc">Practice on real cloud consoles — not simulations. Actual AWS, Azure, and GCP environments.</div>
-        </div>
+        <div><div class="why-name">Live Cloud Lab Access</div><div class="why-desc">Practice on real cloud consoles — not simulations. Actual AWS, Azure, and GCP environments.</div></div>
       </div>
       <div class="why-card">
         <div class="why-icon-wrap">🏆</div>
-        <div>
-          <div class="why-name">Certification Preparation</div>
-          <div class="why-desc">Curriculum aligned with AWS, Azure, and GCP associate-level certification exams.</div>
-        </div>
+        <div><div class="why-name">Certification Preparation</div><div class="why-desc">Curriculum aligned with AWS, Azure, and GCP associate-level certification exams.</div></div>
       </div>
       <div class="why-card">
         <div class="why-icon-wrap">🤝</div>
-        <div>
-          <div class="why-name">100% Placement Support</div>
-          <div class="why-desc">Dedicated placement cell with 100% job support — resume prep, mock interviews, and referrals until you land the role.</div>
-        </div>
+        <div><div class="why-name">100% Placement Support</div><div class="why-desc">Dedicated placement cell with 100% job support — resume prep, mock interviews, and referrals until you land the role.</div></div>
       </div>
     </div>
   </div>
